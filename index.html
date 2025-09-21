@@ -1,25 +1,22 @@
-;; The first three lines of this file were inserted by DrRacket. They record metadata
-;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname index) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor mixed-fraction #f #t none #f () #t)))
 <!DOCTYPE html>
-<html lang="zh"> 
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <title>xl很想你, 所以来问你问题</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background-image: url("https://github.com/Dahei136/xiaolixihuanmqq/blob/main/xm.jpg?raw=true
-");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      height: 100%;
       font-family: sans-serif;
       color: white;
       text-align: center;
-      padding: 3em;
+      background: url("https://github.com/Dahei136/xiaolixihuanmqq/blob/main/xm.jpg?raw=true") no-repeat center center fixed;
+      background-size: cover;
       backdrop-filter: brightness(0.85);
+    }
+    .container {
+      padding: 3em;
     }
     input, button {
       margin: 0.5em;
@@ -40,17 +37,19 @@
   </style>
 </head>
 <body>
-  <h2>xl很想你, 所以来问你问题</h2>
-  <label>小厉最喜欢:<input type="text" id="inputName" placeholder="请输入名字"></label><br>
-  <button onclick="checkName()">提交</button>
+  <div class="container">
+    <h2>xl很想你, 所以来问你问题</h2>
+    <label>小厉最喜欢：<input type="text" id="inputName" placeholder="请输入名字"></label><br>
+    <button onclick="checkName()">提交</button>
 
-  <p id="message"></p>
-  <div id="followup" style="display:none;">
-    <p>他还有话想和你说</p>
-    <button onclick="showMessage()">看看</button>
-    <button onclick="hideMessage()">不看</button>
+    <p id="message"></p>
+    <div id="followup" style="display:none;">
+      <p>他还有话想和你说</p>
+      <button onclick="showMessage()">看看</button>
+      <button onclick="hideMessage()">不看</button>
+    </div>
+    <p id="final"></p>
   </div>
-  <p id="final"></p>
 
   <script>
     let wrongCount = 0;
@@ -65,7 +64,7 @@
       final.innerText = "";
 
       if (name === "马千千") {
-        msg.innerText = "答对勒,小厉最喜欢你了";
+        msg.innerText = "答对勒，小厉最喜欢你了";
         followup.style.display = "block";
         wrongCount = 0;
       } else {
@@ -91,3 +90,4 @@
   </script>
 </body>
 </html>
+
