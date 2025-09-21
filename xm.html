@@ -1,0 +1,92 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname index) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor mixed-fraction #f #t none #f () #t)))
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>xl很想你, 所以来问你问题</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("https://Dahei136.github.io/symbol-check/xm.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: sans-serif;
+      color: white;
+      text-align: center;
+      padding: 3em;
+      backdrop-filter: brightness(0.85);
+    }
+    input, button {
+      margin: 0.5em;
+      padding: 0.5em;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: rgba(255,255,255,0.2);
+      color: white;
+    }
+    button:hover {
+      background-color: rgba(255,255,255,0.4);
+    }
+    #message, #followup, #final {
+      margin-top: 1em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>xl很想你, 所以来问你问题</h2>
+  <label>小厉最喜欢:<input type="text" id="inputName" placeholder="请输入名字"></label><br>
+  <button onclick="checkName()">提交</button>
+
+  <p id="message"></p>
+  <div id="followup" style="display:none;">
+    <p>他还有话想和你说</p>
+    <button onclick="showMessage()">看看</button>
+    <button onclick="hideMessage()">不看</button>
+  </div>
+  <p id="final"></p>
+
+  <script>
+    let wrongCount = 0;
+
+    function checkName() {
+      const name = document.getElementById("inputName").value.trim();
+      const msg = document.getElementById("message");
+      const followup = document.getElementById("followup");
+      const final = document.getElementById("final");
+      msg.innerText = "";
+      followup.style.display = "none";
+      final.innerText = "";
+
+      if (name === "马千千") {
+        msg.innerText = "答对勒,小厉最喜欢你了";
+        followup.style.display = "block";
+        wrongCount = 0;
+      } else {
+        wrongCount++;
+        if (wrongCount === 1) {
+          msg.innerText = "小厉不想吃西昔 可不可以回心转意";
+        } else if (wrongCount === 2) {
+          msg.innerText = "不准喜欢他";
+        } else {
+          msg.innerText = "哦 白忙活了";
+        }
+      }
+    }
+
+    function showMessage() {
+      document.getElementById("final").innerText =
+        "小厉想说 他一直很想你 希望你一切顺利 照顾好自己 以后想我或者不开心了就进来看看 小厉一直都陪着你";
+    }
+
+    function hideMessage() {
+      document.getElementById("final").innerText = "小厉伤心 还是看看吧 :( ";
+    }
+  </script>
+</body>
+</html>
